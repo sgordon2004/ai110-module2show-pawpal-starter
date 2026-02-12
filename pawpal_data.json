@@ -1,0 +1,165 @@
+{
+  "name": "Jon",
+  "pets": [
+    {
+      "name": "Garfield",
+      "breed": "Cat",
+      "age": 6,
+      "weight": 25.0,
+      "tasks": [
+        {
+          "name": "Feed",
+          "priority": "high",
+          "duration": 5,
+          "due_date": "2026-02-12T00:00:00",
+          "start_time": null,
+          "completed": true,
+          "description": null,
+          "recurrence": "daily",
+          "recurrence_days": null,
+          "last_completed": "2026-02-12T16:33:21.804744"
+        },
+        {
+          "name": "Bathe",
+          "priority": "low",
+          "duration": 60,
+          "due_date": "2026-02-12T00:00:00",
+          "start_time": null,
+          "completed": true,
+          "description": null,
+          "recurrence": "monthly",
+          "recurrence_days": null,
+          "last_completed": "2026-02-12T16:33:35.135195"
+        },
+        {
+          "name": "Feed",
+          "priority": "high",
+          "duration": 5,
+          "due_date": "2026-02-13T00:00:00",
+          "start_time": null,
+          "completed": true,
+          "description": null,
+          "recurrence": "daily",
+          "recurrence_days": null,
+          "last_completed": "2026-02-12T16:48:21.451464"
+        },
+        {
+          "name": "Bathe",
+          "priority": "low",
+          "duration": 60,
+          "due_date": "2026-03-14T00:00:00",
+          "start_time": null,
+          "completed": false,
+          "description": null,
+          "recurrence": "monthly",
+          "recurrence_days": null,
+          "last_completed": null
+        },
+        {
+          "name": "Vet Visit",
+          "priority": "high",
+          "duration": 90,
+          "due_date": "2026-02-12T00:00:00",
+          "start_time": null,
+          "completed": true,
+          "description": null,
+          "recurrence": "once",
+          "recurrence_days": null,
+          "last_completed": "2026-02-12T17:26:02.331501"
+        },
+        {
+          "name": "Feed",
+          "priority": "high",
+          "duration": 5,
+          "due_date": "2026-02-14T00:00:00",
+          "start_time": null,
+          "completed": false,
+          "description": null,
+          "recurrence": "daily",
+          "recurrence_days": null,
+          "last_completed": null
+        },
+        {
+          "name": "Groomer",
+          "priority": "high",
+          "duration": 20,
+          "due_date": "2026-02-13T00:00:00",
+          "start_time": "09:00:00",
+          "completed": false,
+          "description": null,
+          "recurrence": "once",
+          "recurrence_days": null,
+          "last_completed": null
+        }
+      ]
+    },
+    {
+      "name": "Odie",
+      "breed": "Dog",
+      "age": 2,
+      "weight": 10.0,
+      "tasks": [
+        {
+          "name": "Feed",
+          "priority": "high",
+          "duration": 5,
+          "due_date": "2026-02-12T00:00:00",
+          "start_time": null,
+          "completed": true,
+          "description": null,
+          "recurrence": "daily",
+          "recurrence_days": null,
+          "last_completed": "2026-02-12T16:51:47.081749"
+        },
+        {
+          "name": "Groom",
+          "priority": "medium",
+          "duration": 60,
+          "due_date": "2026-02-12T00:00:00",
+          "start_time": null,
+          "completed": true,
+          "description": null,
+          "recurrence": "monthly",
+          "recurrence_days": null,
+          "last_completed": "2026-02-12T17:26:05.659575"
+        },
+        {
+          "name": "Feed",
+          "priority": "high",
+          "duration": 5,
+          "due_date": "2026-02-13T00:00:00",
+          "start_time": null,
+          "completed": false,
+          "description": null,
+          "recurrence": "daily",
+          "recurrence_days": null,
+          "last_completed": null
+        },
+        {
+          "name": "Swim",
+          "priority": "high",
+          "duration": 20,
+          "due_date": "2026-02-13T00:00:00",
+          "start_time": "09:00:00",
+          "completed": false,
+          "description": null,
+          "recurrence": "once",
+          "recurrence_days": null,
+          "last_completed": null
+        },
+        {
+          "name": "Groom",
+          "priority": "medium",
+          "duration": 60,
+          "due_date": "2026-03-14T00:00:00",
+          "start_time": null,
+          "completed": false,
+          "description": null,
+          "recurrence": "monthly",
+          "recurrence_days": null,
+          "last_completed": null
+        }
+      ]
+    }
+  ]
+}

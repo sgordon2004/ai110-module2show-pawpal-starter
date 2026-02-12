@@ -45,8 +45,7 @@
 
 **b. Design changes**
 
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
+- My design changes during implementation, multiple times. One example is my Owner class; although I originally designed it with an `allot_time()` function (for the user to dictate when they are available for task completion), I decided to remove it. It made the scheduling algorithm far more complicated and extended beyond the scope of this project's MVP.
 
 ---
 
@@ -54,13 +53,12 @@
 
 **a. Constraints and priorities**
 
-- What constraints does your scheduler consider (for example: time, priority, preferences)?
-- How did you decide which constraints mattered most?
+- My scheduler considers priority (high first), due date urgency (soonest/overdue first), then by duration. A task's priority is the primary sort key—-I believe that weighing the task's priority any less would defeat the purpose of allowing the user to add priority levels. Date urgency is weighted more than duration because tasks that are overdue or need to be done sooner should be pushed to the top, regardless of their duration.
 
 **b. Tradeoffs**
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+- My scheduler requires explicit start times for conflict detection. It only flags conflicts when BOTH tashs have scheduled times.
+- Even though this tradeoff won't catch conflicts if a start time is omitted, it is worth it because it prevents noise from flexible tasks. Spamming the user with warning messages for these tasks would defeat the purpose of including warnings in the first place. This tradeoff aligns more with user intent.
 
 ---
 
@@ -68,13 +66,13 @@
 
 **a. How you used AI**
 
-- How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
-- What kinds of prompts or questions were most helpful?
+- I used Claude code during all stages of development of this project. It was helpful during the design brainstorming phase because it helped provide feedback on my design. It was also incredibly helpful during the initial coding phase, as it quickly spat out boilerplate code for me to edit the specifics of manually.
+- I find that the most effective prompts are those that ask specific, granular questions, and make clear demands. Also, avoid overloading one prompt with too many demands, as this can overwhelm Claude Code and result in less accurate responses.
+
 
 **b. Judgment and verification**
 
-- Describe one moment where you did not accept an AI suggestion as-is.
-- How did you evaluate or verify what the AI suggested?
+- When I asked Claude Code to generate code to display tasks sorted by due date, it tried to replace the code to sort by order entered. I wanted both options to exist, rather than replacing the ability to sort by order entered. Instead of immediately accpeting the change, I asked Claude Code to make a more specific edit, and then accepted its new iteration after verifying its correctness.
 
 ---
 

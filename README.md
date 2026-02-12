@@ -22,6 +22,20 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Smarter Scheduling
+
+The PawPal+ scheduler now includes intelligent features that go beyond basic task management:
+
+**Recurring Tasks** — Tasks can repeat on a schedule (daily, weekly, biweekly, monthly). When you mark a recurring task complete, the system automatically creates the next occurrence so you never forget a repeated care routine.
+
+**Appointment Conflict Detection** — The scheduler detects when two scheduled appointments overlap on the same day. Set a start time for appointments like vet visits or grooming to enable conflict warnings. Flexible tasks (like "feed the cat") don't trigger false positives.
+
+**Smart Prioritization** — The schedule generator sorts tasks by priority level first, then urgency (overdue tasks rise to the top), then duration (shorter tasks first). This ensures critical care happens on time.
+
+**Task Persistence** — All your pets, tasks, and schedules are saved to JSON and automatically restored when you restart the app. Edit or mark tasks complete without losing data.
+
+**Schedule Separation** — Generated schedules clearly separate today's tasks from future tasks, making it easy to focus on what needs to happen now.
+
 ## Getting started
 
 ### Setup

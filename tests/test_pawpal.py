@@ -1,6 +1,5 @@
 import unittest
-from datetime import datetime
-from pawpal_system import Owner, Pet, Task
+from pawpal_system import Owner, Pet, Task, Priority
 
 
 class TestPawPalSystem(unittest.TestCase):
@@ -13,12 +12,11 @@ class TestPawPalSystem(unittest.TestCase):
         pet = Pet("Fluffy", "Cat", 3, 10.0, [])
         owner.add_pet(pet)
 
-        # Create a task
+        # Create a task (duration in minutes)
         task = Task(
             "Feed Fluffy",
-            1,
-            datetime(2026, 2, 12, 9, 0),
-            datetime(2026, 2, 12, 9, 15)
+            Priority.HIGH,
+            15  # 15 minutes
         )
         pet.add_task(task)
 
@@ -39,12 +37,11 @@ class TestPawPalSystem(unittest.TestCase):
         # Verify initial task count is 0
         self.assertEqual(pet.num_tasks, 0)
 
-        # Add a task
+        # Add a task (duration in minutes)
         task1 = Task(
             "Walk Buddy",
-            1,
-            datetime(2026, 2, 12, 10, 0),
-            datetime(2026, 2, 12, 10, 30)
+            Priority.HIGH,
+            30  # 30 minutes
         )
         pet.add_task(task1)
 
@@ -54,9 +51,8 @@ class TestPawPalSystem(unittest.TestCase):
         # Add another task
         task2 = Task(
             "Feed Buddy",
-            1,
-            datetime(2026, 2, 12, 12, 0),
-            datetime(2026, 2, 12, 12, 15)
+            Priority.HIGH,
+            15  # 15 minutes
         )
         pet.add_task(task2)
 
