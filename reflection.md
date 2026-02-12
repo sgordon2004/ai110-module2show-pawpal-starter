@@ -4,8 +4,44 @@
 
 **a. Initial design**
 
+**Three Core Actions a User Should Be Able to Perform:**
+1. Add a pet
+2. Schedule a walk
+3. See today's tasks
+
 - Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+
+**Main Objects Needed:**
+1. Owner
+    - **Attributes:**
+        - `name`
+        - `pet`
+        - `time_available`
+    - **Methods:**
+        - `add_pet`
+        - `remove_pet`
+        - `add_task`
+        - `edit_task`
+        - `allot_time`
+2. Pet
+    - **Attributes:**
+        - `name`
+        - `breed`
+        - `age`
+        - `weight`
+3. Task
+    - **Attributes:**
+        - `name`
+        - `description`
+        - `priority`
+        - `start_time`
+        - `end_time`
+4. Scheduler
+    - **Attributes:**
+        - 
+    - **Methods:**
+        - `create_plan`
+        - `explain_plan`
 
 **b. Design changes**
 
