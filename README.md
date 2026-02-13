@@ -83,7 +83,7 @@ Displays the schedule plan with:
 - Optional task descriptions for context
 
 ### Demo
-<img src='uml_final.png'/>
+<img title="PawPal Screenshot" alt="PawPal Screenshot" src="demo_screenshot.png">
 
 ## Getting started
 
