@@ -84,6 +84,7 @@ Displays the schedule plan with:
 
 ### Demo
 <img title="PawPal Screenshot" alt="PawPal Screenshot" src="demo_screenshot.png">
+![PawPal Screenshot](demo_screenshot.png)
 
 ## Getting started
 
