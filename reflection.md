@@ -80,13 +80,11 @@
 
 **a. What you tested**
 
-- What behaviors did you test?
-- Why were these tests important?
+- My tests cover sorting correctness, recurrence logic, conflict detection, and data persistence. These are important because they are the core functionalities of our app. If the sorting logic doesn't work, then PawPal is useless. Data persistence is also important since it would be very annoying for the user to have to reenter their information every time they open the app again.
 
 **b. Confidence**
 
-- How confident are you that your scheduler works correctly?
-- What edge cases would you test next if you had more time?
+- I am fully confident that my scheduler works correctly because it passed 17/17 tests. If I had more time, I would test the following edge cases: invalid priority values, invalid reccurence patterns, a None priority value, and sorting an empty task list.
 
 ---
 
@@ -94,12 +92,12 @@
 
 **a. What went well**
 
-- What part of this project are you most satisfied with?
+- I am most satisfied with the scheduling logic of this project. I've implemented multiple ways for the user to schedule their tasks, along with a scheduler that defaults to doing the highest priority tasks first, followed by due date, and then duration.
 
 **b. What you would improve**
 
-- If you had another iteration, what would you improve or redesign?
+- If I had another iteration, I would polish the UI. Right now, certain functions can be performed through both the task list and the generated schedule. Having multiple ways to perform the same action can be confusing for the user, and I'd like to address this issue.
 
 **c. Key takeaway**
 
-- What is one important thing you learned about designing systems or working with AI on this project?
+- I learned about the importance of planning your project architeture before starting development. Having a clear blueprint of what you're building makes it much easier to implement your app's core features.
