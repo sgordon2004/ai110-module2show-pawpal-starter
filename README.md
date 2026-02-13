@@ -22,19 +22,68 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
-## Smarter Scheduling
+## Features
 
-The PawPal+ scheduler now includes intelligent features that go beyond basic task management:
+The PawPal+ scheduler implements intelligent algorithms that go beyond basic task management:
 
-**Recurring Tasks** — Tasks can repeat on a schedule (daily, weekly, biweekly, monthly). When you mark a recurring task complete, the system automatically creates the next occurrence so you never forget a repeated care routine.
+### 🎯 Multi-Level Task Sorting
+**Algorithm**: Lexicographic sort by (Priority, Days Until Due, Duration)
 
-**Appointment Conflict Detection** — The scheduler detects when two scheduled appointments overlap on the same day. Set a start time for appointments like vet visits or grooming to enable conflict warnings. Flexible tasks (like "feed the cat") don't trigger false positives.
+The `create_plan()` method sorts tasks using a three-tier hierarchy:
+1. **Priority** — High priority tasks (HIGH → MEDIUM → LOW) are scheduled first
+2. **Due Date Urgency** — Within each priority level, tasks are sorted by how soon they're due. Overdue tasks surface immediately, followed by today's tasks, then future tasks
+3. **Duration** — Tasks with equal priority and due date are ordered by length, with shorter tasks first to maximize completion
 
-**Smart Prioritization** — The schedule generator sorts tasks by priority level first, then urgency (overdue tasks rise to the top), then duration (shorter tasks first). This ensures critical care happens on time.
+This ensures the owner tackles the most critical, time-sensitive, shortest tasks first.
 
-**Task Persistence** — All your pets, tasks, and schedules are saved to JSON and automatically restored when you restart the app. Edit or mark tasks complete without losing data.
+### 📅 Recurring Task Scheduling
+**Patterns**: ONCE, DAILY, WEEKLY, BIWEEKLY, MONTHLY
 
-**Schedule Separation** — Generated schedules clearly separate today's tasks from future tasks, making it easy to focus on what needs to happen now.
+When a recurring task is marked complete:
+- The system records `last_completed` timestamp
+- Automatically calculates the next due date based on recurrence pattern
+- Creates a new task instance with identical properties but updated due date
+- New task is added to the pet's task list
+
+The `needs_scheduling()` method checks if a recurring task is ready for a new occurrence by comparing the interval against `last_completed`.
+
+### ⚠️ Appointment Conflict Detection
+**Algorithm**: Interval overlap detection on scheduled time slots
+
+The `detect_conflicts()` method:
+- Compares all tasks with explicit `start_time` values (ignores flexible tasks)
+- For each pair, calculates end times using `start_time + duration`
+- Detects overlap: `start1 < end2 AND start2 < end1`
+- Returns human-readable warnings identifying conflicting tasks and their pets
+
+This prevents double-booking vet appointments, grooming sessions, or other time-critical care without false positives for flexible tasks like feeding.
+
+### 🚨 Overdue Task Detection
+**Method**: `is_overdue()` checks if a task's due date has passed
+
+Automatically flags incomplete tasks where `due_date < today()` to draw attention to missed care routines.
+
+### 💾 Data Persistence
+**Format**: JSON serialization with full object reconstruction
+
+The system provides:
+- `save_owner_to_json()` — Writes owner, all pets, and all tasks to JSON
+- `load_owner_from_json()` — Reconstructs complete object graph from JSON
+- Full support for enums (Priority, Recurrence) and datetime objects
+- Handles optional fields gracefully (description, start_time, etc.)
+
+All data persists between app sessions.
+
+### 📋 Schedule Explanation
+**Method**: `explain_plan()` generates human-readable schedule summaries
+
+Displays the schedule plan with:
+- Total task count and total time commitment
+- Each task's name, priority level, and duration
+- Optional task descriptions for context
+
+### Demo
+<a href="uml_final.png" target="_blank"><img src='uml_final.png'/>
 
 ## Getting started
 
