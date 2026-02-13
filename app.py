@@ -213,7 +213,19 @@ def edit_task_dialog(task_to_edit):
             st.rerun()
 
 if st.session_state.tasks:
-    sort_by = st.selectbox("Sort by:", ["Due Date", "Order Entered", "Pet", "Priority", "Status"])
+    col1, col2 = st.columns(2)
+    with col1:
+        sort_by = st.selectbox("Sort by:", ["Due Date", "Order Entered", "Pet", "Priority", "Status"])
+    with col2:
+        filter_by = st.selectbox("Filter by:", ["None", "Completed", "Uncompleted", "Overdue", "Pet", "Priority", "Today", "Future"])
+
+    # Conditional filter options
+    filter_pet = None
+    filter_priority = None
+    if filter_by == "Pet":
+        filter_pet = st.selectbox("Select pet:", [pet.name for pet in owner.pets])
+    elif filter_by == "Priority":
+        filter_priority = st.selectbox("Select priority:", ["HIGH", "MEDIUM", "LOW"])
 
     # Convert display list to actual Task objects for sorting
     task_objects = []
@@ -234,7 +246,38 @@ if st.session_state.tasks:
         case "Status":
             sorted_tasks = sorted(task_objects, key=lambda t: t.is_overdue(), reverse=True)
 
-    # Display sorted tasks with complete buttons
+    # Apply filters to sorted tasks
+    filtered_tasks = []
+    today = datetime.now().date()
+    for task in sorted_tasks:
+        include_task = True
+
+        # Apply filter based on filter_by selection
+        match filter_by:
+            case "None":
+                include_task = not task.completed
+            case "Completed":
+                include_task = task.completed
+            case "Uncompleted":
+                include_task = not task.completed
+            case "Overdue":
+                include_task = task.is_overdue()
+            case "Pet":
+                task_pet = next((p.name for p in owner.pets if task in p.tasks), None)
+                include_task = task_pet == filter_pet and not task.completed
+            case "Priority":
+                include_task = task.priority.value.upper() == filter_priority and not task.completed
+            case "Today":
+                task_date = task.due_date.date() if task.due_date else None
+                include_task = task_date == today and not task.completed
+            case "Future":
+                task_date = task.due_date.date() if task.due_date else None
+                include_task = (task_date and task_date > today) and not task.completed
+
+        if include_task:
+            filtered_tasks.append(task)
+
+    # Display filtered and sorted tasks
     st.markdown("**Task List:**")
 
     # Display column headers
@@ -258,8 +301,8 @@ if st.session_state.tasks:
     with header_col9:
         st.write("**Delete**")
 
-    for task in sorted_tasks:
-        if not task.completed:  # Only show incomplete tasks
+    if filtered_tasks:
+        for task in filtered_tasks:
             pet_name = next((p.name for p in owner.pets if task in p.tasks), "Unknown")
             due_date_str = task.due_date.strftime("%Y-%m-%d") if task.due_date else "No due date"
             status = "⚠️ OVERDUE" if task.is_overdue() else "On Time"
@@ -310,6 +353,8 @@ if st.session_state.tasks:
                     save_owner_to_json(owner)
                     st.success(f"Deleted '{task.name}'!")
                     st.rerun()
+    else:
+        st.info(f"No tasks match the '{filter_by}' filter.")
 else:
     st.info("No tasks yet. Add one below.")
 

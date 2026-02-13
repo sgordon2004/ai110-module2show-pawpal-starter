@@ -55,3 +55,6 @@ pip install -r requirements.txt
 5. Add tests to verify key behaviors.
 6. Connect your logic to the Streamlit UI in `app.py`.
 7. Refine UML so it matches what you actually built.
+
+### Testing Pawpwal+
+The command to run tests is `python -m pytest`. The tests cover sorting correctness, recurrence logic, conflict detection, and data persistence. Based on the fact that 17/17 tests passed, I have a 5/5 confidence level in Pawpal+.

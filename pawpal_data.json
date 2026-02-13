@@ -85,11 +85,11 @@
           "duration": 20,
           "due_date": "2026-02-13T00:00:00",
           "start_time": "09:00:00",
-          "completed": false,
+          "completed": true,
           "description": null,
           "recurrence": "once",
           "recurrence_days": null,
-          "last_completed": null
+          "last_completed": "2026-02-12T18:01:38.281005"
         }
       ]
     },
