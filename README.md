@@ -83,7 +83,7 @@ Displays the schedule plan with:
 - Optional task descriptions for context
 
 ### Demo
-<a href="uml_final.png" target="_blank"><img src='uml_final.png'/>
+<img src='uml_final.png'/>
 
 ## Getting started
 
